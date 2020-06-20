@@ -4,7 +4,6 @@ from cards import *
 from games_games import *
 from card_engine import CardEngine
 
-
 with open("balance.txt", "r") as balance:
     money = int(balance.read())
 
@@ -17,14 +16,13 @@ print("""
  \______/__/     \__\ |_______/    |__| |__| \__|  \______/
 
 """)
-print("Hello, Welcome to GriffCasino! Your starting balance is 100 GriffCoins™! \nPlease Select the Game you would like to play! \n1)Coin Flip \n2)Roulette \n3)Black Jack \n")
-selection = input("Please enter your choice via it's corresponding number! \n")
+selection = input("Hello, Welcome to GriffCasino! Your starting balance is {} GriffCoins™! \nPlease Select the Game you would like to play! \n1)Coin Flip \n2)Roulette \n3)Black Jack \nPlease enter your choice via it's corresponding number! \n".format(money))
 
 checker = True
 
 while checker:
     try:
-        if int(selection) > 0 and int(selection) <= 4:
+        if int(selection) > 0 and int(selection) < 4:
             checker = False
         else:
             selection = input("Please use number within the range! \n")
@@ -81,8 +79,7 @@ if selection == "2":
                 amount = input("Invalid amount bet! Your current balance is {} GriffCoins™. Please try again! \n".format(money))
         except:
             amount = input("Invalid input! Please try again! \n")
-    print("Please select if you would like to bet where the wheel will land on!")
-    bet = (input("NUMBER / COLOUR / PARITY \n")).title()
+    bet = (input("\nPlease select if you would like to bet where the wheel will land on!\nNUMBER / COLOUR / PARITY \n")).title()
     checker = True
     while checker:
         if bet == "Number" or  bet == "Colour" or bet == "Parity":
@@ -196,7 +193,7 @@ if selection == "3":
             else:
                 checker = False
         if move == "stand":
-            print("Dealers current hand:")
+            print("Dealer's current hand:")
             for i in dealer_hand:
                 print(deck.graphic(i))
             print("Dealer has a {} of {} and a {} of {}...\n".format(deck.card_reader(dealer_hand[0])[1], (deck.card_reader(dealer_hand[0])[2]), deck.card_reader(dealer_hand[1])[1], (deck.card_reader(dealer_hand[1])[2])))
@@ -248,12 +245,12 @@ if selection == "3":
                 for i in dealer_hand:
                     print(deck.graphic(i))
                 print("Dealer has a {} of {} and a {} of {}...\n".format(deck.card_reader(dealer_hand[0])[1], (deck.card_reader(dealer_hand[0])[2]), deck.card_reader(dealer_hand[1])[1], (deck.card_reader(dealer_hand[1])[2])))
-                print("Dealers hand is worth {}!".format(dealer_value))
+                print("Dealer's hand is worth {}!".format(dealer_value))
                 if dealer_value > player_value:
                     print("Dealer wins!")
                     lose(amount)
                 if dealer_value == player_value:
-                    print("Split")
+                    print("Split...")
                 else:
                     if dealer_value < player_value:
                         print("Drawing more cards for the dealer...")
