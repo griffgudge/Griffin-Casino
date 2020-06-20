@@ -1,8 +1,6 @@
 import random
 
-money = 100
-
-#Write your game of chance functions here
+################Roulette#########################################
 
 def wheel_maker():
     wheel_nums = []
@@ -38,10 +36,16 @@ def wheel_maker():
             wheel_colors.append("Red")
         else:
             wheel_colors.append("Green")
-
     wheel = list(zip(wheel_nums, num_type, wheel_colors))
-
     return wheel
+
+def roulette():
+    wheel = wheel_maker()
+    index = random.randint(0, 35)
+    landed = wheel[index]
+    return landed
+
+########################COIN FLIP####################################################
 
 def coin():
     num = random.randint(0, 1)
@@ -51,12 +55,6 @@ def coin():
     else:
         side = "Tales"
     return side
-
-def roulette():
-    wheel = wheel_maker()
-    index = random.randint(0, 35)
-    landed = wheel[index]
-    return landed
 
 #############################################BLACK JACK##################################
 def value_converter(value):
