@@ -45,12 +45,12 @@ if selection == "1":
     print("Please choose whether you think the coin will land on heads or tails \n")
     checker = True
     while checker:
-        selection = (input("Heads or Tales? \n")).title()
-        if selection == "Heads" or selection == "Tales":
+        selection = (input("Heads or Tails? \n")).title()
+        if selection == "Heads" or selection == "Tails":
             print("You selected {}!".format(selection))
             checker = False
         else:
-            print("You selected neither heads nor tales! Please try again!")
+            print("You selected neither heads nor tails! Please try again!")
     print("Flipping coin...")
     time.sleep(1)
     side = coin()
